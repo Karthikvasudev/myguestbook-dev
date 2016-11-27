@@ -1,0 +1,13 @@
+---
+- hosts: all
+  sudo: yes
+  roles:
+    - ruby
+    - redis
+
+  # Development-specific tasks
+  tasks:
+    - name: Run bundle install
+      shell: bundle install chdir=/vagrant
+#If needed please uncomment the below shell, hence the DB is created.For me DB setup is centralized and hosted in AWS RDS 
+     #shell: bundle exec rake db:migrate
